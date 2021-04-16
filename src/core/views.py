@@ -31,7 +31,7 @@ class ResourceView(APIView):
     def delete(self, request: Request, pk: int):
         resource = get_object_or_404(Resource, pk=pk)
         resource.delete()
-        Response(ResourceSerializer(resource).data, status=HTTP_200_OK)
+        return Response(ResourceSerializer(resource).data, status=HTTP_200_OK)
 
     def _update(self, request: Request, pk: int, partial=False):
         resource = get_object_or_404(Resource, pk=pk)
