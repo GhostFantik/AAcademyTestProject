@@ -12,7 +12,7 @@ class ResourceSerializer(serializers.ModelSerializer):
         model = Resource
         fields = ['title', 'id', 'amount', 'unit', 'price', 'date', 'cost']
 
-    def get_cost(obj):
+    def get_cost(self, obj):
         return obj.price * obj.amount
 
 
@@ -25,4 +25,4 @@ class AllResourcesSerializer(serializers.Serializer):
         return len(obj)
 
     def get_resources(self, obj):
-        return ResourceSerializer(obj, many=True)
+        return ResourceSerializer(obj, many=True).data
