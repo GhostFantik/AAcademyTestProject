@@ -13,6 +13,7 @@ class ResourceSerializer(serializers.ModelSerializer):
         fields = ['title', 'id', 'amount', 'unit', 'price', 'date', 'cost']
 
     def get_cost(self, obj):
+        """return cost for method field cost"""
         return obj.price * obj.amount
 
 
@@ -22,7 +23,9 @@ class AllResourcesSerializer(serializers.Serializer):
     total_count = serializers.SerializerMethodField()
 
     def get_total_count(self, obj):
+        """return total count for method field resources"""
         return len(obj)
 
     def get_resources(self, obj):
+        """return resources for method field resources"""
         return ResourceSerializer(obj, many=True).data
