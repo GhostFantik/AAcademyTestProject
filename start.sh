@@ -3,4 +3,4 @@
 sleep 3
 python ./src/manage.py migrate
 python ./src/manage.py test
-gunicorn -pythonpath="/home/code/src" test_project.wsgi
+gunicorn -b 0.0.0.0:8000 --chdir ./src test_project.wsgi
