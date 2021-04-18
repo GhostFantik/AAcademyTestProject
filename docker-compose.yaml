@@ -7,7 +7,7 @@ services:
     ports:
       - 8000:8000
     volumes:
-    - /home/code/db:/code/
+    - ./:/code/
     depends_on:
       - db
     command: ./start.sh
@@ -16,7 +16,7 @@ services:
     image: postgres
     restart: always
     volumes:
-      - /db:/var/lib/postgresql/data
+      - /home/code/db:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=prod
       - POSTGRES_USER=postgres
